@@ -242,51 +242,57 @@ const categoryDefinitions = {
   appetizers: {
     icon: "🥗",
     description:
-      "Begin your culinary journey with our carefully crafted starters that awaken the palate and set the tone for the meal ahead.",
+      "Fresh starters and crispy bites to kick off your meal with bold flavor.",
     color: "from-green-500/20 to-emerald-600/20",
     bgColor: "bg-gradient-to-br from-green-500/10 to-emerald-600/10",
   },
   salads: {
     icon: "🥬",
     description:
-      "Fresh, crisp, and vibrant salads made with seasonal greens and house-made dressings for a refreshing experience.",
+      "Light and refreshing salad bowls with house-style seasoning and dressings.",
     color: "from-lime-500/20 to-green-600/20",
     bgColor: "bg-gradient-to-br from-lime-500/10 to-green-600/10",
   },
   breakfast: {
     icon: "🍳",
     description:
-      "Start your day right with our all-day breakfast selections, combining classic favorites with innovative twists.",
+      "All day breakfast favorites, from toast classics to egg-loaded comfort food.",
     color: "from-orange-500/20 to-amber-600/20",
     bgColor: "bg-gradient-to-br from-orange-500/10 to-amber-600/10",
   },
   originals: {
     icon: "🌟",
     description:
-      "Our signature creations - unique dishes that showcase the creativity and passion of our culinary team.",
+      "Isai signatures made with unique combinations and bold house flavors.",
     color: "from-purple-500/20 to-pink-600/20",
     bgColor: "bg-gradient-to-br from-purple-500/10 to-pink-600/10",
   },
   burgers: {
     icon: "🍔",
     description:
-      "Hearty, satisfying burgers and sandwiches made with premium ingredients and served with our signature sauces.",
+      "Loaded burgers and sandwiches with veg/chicken options and house sauces.",
     color: "from-red-500/20 to-orange-600/20",
     bgColor: "bg-gradient-to-br from-red-500/10 to-orange-600/10",
   },
   beverages: {
     icon: "☕",
     description:
-      "Carefully crafted drinks ranging from traditional brews to innovative creations that complement your meal perfectly.",
+      "From classic tea and coffee to coolers and slushies for every mood.",
     color: "from-blue-500/20 to-cyan-600/20",
     bgColor: "bg-gradient-to-br from-blue-500/10 to-cyan-600/10",
   },
   seasonal: {
-    icon: "🎄",
-    description:
-      "Special creations that celebrate the seasons, featuring limited-time ingredients and festive flavors.",
+    icon: "🍫",
+    description: "Sweet treats and dessert specials to finish on a rich note.",
     color: "from-yellow-500/20 to-orange-600/20",
     bgColor: "bg-gradient-to-br from-yellow-500/10 to-orange-600/10",
+  },
+  addOns: {
+    icon: "➕",
+    description:
+      "Customize your order with extra toppings and flavor boosters.",
+    color: "from-teal-500/20 to-emerald-600/20",
+    bgColor: "bg-gradient-to-br from-teal-500/10 to-emerald-600/10",
   },
 };
 
@@ -298,57 +304,46 @@ const menuCategories = {
       {
         id: 1,
         name: "Garlic Bread",
-        price: "₹130.00",
+        price: "₹150/₹180",
         description:
-          "Freshly baked bread topped with garlic butter and herbs, served warm with crispy edges",
+          "Regular/Cheesy toasted bread infused with garlic, herbs, jalapenos, and mozzarella",
         category: "Appetizer",
+        variants: ["Regular", "Cheesy"],
         image: "https://images.unsplash.com/photo-1573821663912-6df460f9c684",
       },
       {
         id: 2,
-        name: "Cheesy Garlic Bread",
-        price: "₹150.00",
-        description:
-          "Golden garlic bread topped with melted cheese blend, baked to perfection",
+        name: "French Fries",
+        price: "₹150",
+        description: "Classic fries tossed with salt, pepper, and thyme",
         category: "Appetizer",
-        image: "https://images.unsplash.com/photo-1619740455993-9e0c7c1d80e4",
+        image: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d",
       },
       {
         id: 3,
-        name: "French Fries",
-        price: "₹130.00",
+        name: "Cajun Fries",
+        price: "₹160",
         description:
-          "Crispy golden fries seasoned with herbs and served with tangy dipping sauce",
+          "Classic fries tossed with our combination of unique spices",
         category: "Appetizer",
-        image: "https://images.unsplash.com/photo-1573821663912-6df460f9c684",
+        image: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d",
       },
       {
         id: 4,
-        name: "Spicy French Fries",
-        price: "₹150.00",
-        description:
-          "Seasoned fries with a spicy kick, perfect for those who love bold flavors",
-        category: "Appetizer",
-        image: "https://images.unsplash.com/photo-1630384082084-735a7f9beb39",
-      },
-      {
-        id: 5,
         name: "Pan Fried Mushrooms",
-        price: "₹180.00",
-        description:
-          "Fresh mushrooms pan-fried to perfection with aromatic herbs and garlic",
+        price: "₹200",
+        description: "A medley of onions and capsicums with sauteed mushrooms",
         category: "Appetizer",
         image: "https://images.unsplash.com/photo-1607532941433-304659e8198a",
       },
       {
-        id: 6,
-        name: "Pan Fried Tenders",
-        price: "₹300.00",
+        id: 5,
+        name: "Pan Fried Chicken",
+        price: "₹300",
         description:
-          "Juicy chicken tenders pan-fried with special seasoning and golden crisp",
+          "Deep fried chicken tenders tossed with onions, capsicum, and spices",
         category: "Appetizer",
         image: "https://images.unsplash.com/photo-1562967914-608f82629710",
-        popular: true,
       },
     ],
   },
@@ -356,23 +351,22 @@ const menuCategories = {
     title: "Salads",
     items: [
       {
-        id: 7,
+        id: 6,
         name: "Honey & Spice",
-        price: "₹200.00",
+        price: "₹220",
         description:
-          "Fresh mixed greens with honey dressing and spicy peanuts for the perfect balance",
+          "Fresh salad of assorted greens served with our honey vinaigrette",
         category: "Salad",
         image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
       },
       {
-        id: 8,
+        id: 7,
         name: "Chicken & Walnut",
-        price: "₹250.00",
+        price: "₹300",
         description:
-          "Tender chicken pieces with crunchy walnuts and fresh seasonal vegetables",
+          "Juicy diced chicken and crunchy walnuts with salad and vinaigrette",
         category: "Salad",
         image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
-        popular: true,
       },
     ],
   },
@@ -380,65 +374,46 @@ const menuCategories = {
     title: "All Day Breakfast",
     items: [
       {
-        id: 9,
+        id: 8,
         name: "Egg Sandwich",
-        price: "₹200.00",
-        description:
-          "Perfectly cooked eggs with fresh vegetables and herbs on toasted bread",
+        price: "₹220",
+        description: "Flavorful omelette with veggies wrapped in toasted bread",
         category: "Breakfast",
         image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b",
       },
       {
+        id: 9,
+        name: "Egg & Cheese Sandwich",
+        price: "₹200/₹230",
+        description:
+          "Regular/Spicy cheesy gooey scrambled egg served in toasted buns with homemade sauce",
+        category: "Breakfast",
+        variants: ["Regular", "Spicy"],
+        image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af",
+      },
+      {
         id: 10,
         name: "French Toast",
-        price: "₹200.00",
+        price: "₹220",
         description:
-          "Classic French toast with cinnamon, vanilla, and maple syrup",
+          "Sweet/Savory fluffy buttery egg-soaked bread toasted to perfection",
         category: "Breakfast",
         image: "https://images.unsplash.com/photo-1484723091739-30a097e8f929",
       },
       {
         id: 11,
-        name: "Masala Toast",
-        price: "₹220.00",
-        description:
-          "Spiced toast with traditional Indian flavors and aromatic spices",
-        category: "Breakfast",
-        image: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62",
-      },
-      {
-        id: 12,
         name: "Eggs & Toast",
-        price: "₹200.00",
+        price: "₹200",
         description:
-          "Simple yet delicious combination of sunny-side eggs with buttered toast",
+          "Eggs of your choice served with a side of garlic butter toast",
         category: "Breakfast",
         image: "https://images.unsplash.com/photo-1525351484163-7529414344d8",
       },
       {
-        id: 13,
-        name: "The English Breakfast",
-        price: "₹400.00",
-        description:
-          "Complete English breakfast with eggs, sausages, bacon, beans, and toast",
-        category: "Breakfast",
-        image: "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666",
-        popular: true,
-      },
-      {
-        id: 14,
-        name: "Cornflakes & Milk",
-        price: "₹160.00",
-        description: "Classic breakfast cereal served with fresh cold milk",
-        category: "Breakfast",
-        image: "https://images.unsplash.com/photo-1620970663330-6c56e1f77f48",
-      },
-      {
-        id: 15,
+        id: 12,
         name: "Poha",
-        price: "₹180.00",
-        description:
-          "Light and fluffy flattened rice cooked with onions, herbs, and spices",
+        price: "₹200",
+        description: "Flattened rice sauteed with onions, peanuts, and spices",
         category: "Breakfast",
         image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84",
       },
@@ -448,93 +423,82 @@ const menuCategories = {
     title: "Isai's Originals",
     items: [
       {
-        id: 16,
-        name: "Egg Wrapped Ramen",
-        price: "₹200.00",
-        description:
-          "Our signature ramen wrapped in a perfectly cooked egg, creating layers of flavor",
+        id: 13,
+        name: "Egg Wrapped Noodles",
+        price: "₹250",
+        description: "Saucy garlic noodles wrapped in a fluffy omelette",
         category: "Signature",
         image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624",
-        popular: true,
       },
       {
-        id: 17,
+        id: 14,
         name: "Egg Wrapped Shrooms",
-        price: "₹200.00",
-        description:
-          "Sauteed mushrooms wrapped in delicate egg layers with aromatic herbs",
+        price: "₹220",
+        description: "Butter sauteed mushrooms wrapped in a fluffy omelette",
         category: "Signature",
         image: "https://images.unsplash.com/photo-1608039831741-8e4a4a3d77b8",
       },
       {
-        id: 18,
+        id: 15,
         name: "Semi-Fried Momos",
-        price: "₹200.00",
+        price: "₹200/₹250",
         description:
-          "Delicate dumplings semi-fried to achieve the perfect texture and taste",
+          "Veg/Chicken momos pan-fried with onions, capsicum, and sauces",
         category: "Signature",
+        variants: ["Veg", "Chicken"],
         image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb",
       },
       {
-        id: 19,
-        name: "The Bacon Special",
-        price: "₹300.00",
+        id: 16,
+        name: "Chicken Kebab Skewers",
+        price: "₹300",
         description:
-          "Premium bacon preparation with our special sauce and cooking technique",
+          "Three pan-fried juicy chicken skewers served with a drizzle of homemade sauce",
         category: "Signature",
-        image: "https://images.unsplash.com/photo-1528607929212-2636ec44253e",
-        popular: true,
+        image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2",
+      },
+      {
+        id: 17,
+        name: "Chef's Special",
+        price: "₹300-₹600",
+        description:
+          "Tried deciding what to eat? Leave it up to the chef. We promise you'll love it",
+        category: "Signature",
+        image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0",
       },
     ],
   },
   burgers: {
-    title: "Burgers & Sandwiches",
+    title: "Sandwiches",
     items: [
       {
-        id: 23,
-        name: "The Shroomy Burger",
-        price: "₹200.00",
+        id: 18,
+        name: "Shroomy Sandwich",
+        price: "₹250",
         description:
-          "Juicy mushroom patty with fresh vegetables and our signature sauce",
-        category: "Burger",
+          "Pan-fried mushrooms with veggies and sauces, packed in toasted burger buns",
+        category: "Sandwich",
         image: "https://images.unsplash.com/photo-1550547660-d9450f859349",
       },
       {
-        id: 24,
-        name: "Classic Veggie Burger",
-        price: "₹200.00",
+        id: 19,
+        name: "Classic Burger",
+        price: "₹250/₹350",
         description:
-          "Fresh vegetable patty with lettuce, tomato, and creamy sauce",
+          "Veg/Chicken herby homemade patty layered with veggies and house sauces",
         category: "Burger",
+        variants: ["Veg", "Chicken"],
         image: "https://images.unsplash.com/photo-1520072959219-c595dc870360",
       },
       {
-        id: 25,
-        name: "Classic Chicken Burger",
-        price: "₹220.00",
+        id: 20,
+        name: "Classic Club Sandwich",
+        price: "₹250/₹350",
         description:
-          "Grilled chicken breast with fresh vegetables and herbs in soft bun",
-        category: "Burger",
-        image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add",
-        popular: true,
-      },
-      {
-        id: 27,
-        name: "Coleslaw Sandwich",
-        price: "₹200.00",
-        description: "Fresh coleslaw mix with crunchy vegetables in soft bread",
+          "Veg/Chicken veggie stuffed grilled sandwich layered with sauces and spices",
         category: "Sandwich",
-        image: "https://images.unsplash.com/photo-1509722747041-616f39b57569",
-      },
-      {
-        id: 29,
-        name: "Bacon Special Sandwich",
-        price: "₹300.00",
-        description:
-          "Premium bacon sandwich with our special sauce and fresh vegetables",
-        category: "Sandwich",
+        variants: ["Veg", "Chicken"],
         image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af",
-        popular: true,
       },
     ],
   },
@@ -542,115 +506,183 @@ const menuCategories = {
     title: "Beverages",
     items: [
       {
-        id: 30,
-        name: "Black Tea / Coffee",
-        price: "₹60.00",
+        id: 21,
+        name: "Black Tea",
+        price: "₹100/₹150",
         description:
-          "Traditional black tea or coffee served hot, a perfect morning ritual",
+          "Hot/Iced classic black tea brewed to perfection, served with lime and honey",
         category: "Hot Beverages",
+        variants: ["Hot", "Iced"],
         image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574",
       },
       {
-        id: 31,
-        name: "Filter Coffee",
-        price: "₹100.00",
+        id: 22,
+        name: "Herbal Tea",
+        price: "₹200",
         description:
-          "Authentic South Indian filter coffee served hot with rich aroma",
+          "Comes in hibiscus/blue pea flower/chamomile, served with lime and honey",
         category: "Hot Beverages",
-        image: "https://images.unsplash.com/photo-1509048191080-d2b6ca099d14",
-        popular: true,
+        variants: ["Hibiscus", "Blue Pea", "Chamomile"],
+        image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc",
       },
       {
-        id: 32,
-        name: "Cold Coffee",
-        price: "₹160.00",
-        description: "Refreshing cold coffee blend served over ice with cream",
-        category: "Cold Beverages",
-        image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735",
-      },
-      {
-        id: 33,
-        name: "Affogato Filter Coffee",
-        price: "₹200.00",
+        id: 23,
+        name: "Mixed Herbal Tea",
+        price: "₹220/₹250",
         description:
-          "Rich filter coffee poured over vanilla ice cream for a delightful treat",
-        category: "Specialty",
-        image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd",
-        popular: true,
+          "Hot/Iced flowery concoction of herbs served with spices, lime, and honey",
+        category: "Hot Beverages",
+        variants: ["Hot", "Iced"],
+        image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e",
       },
       {
-        id: 34,
-        name: "Affogato Rose",
-        price: "₹200.00",
-        description: "Rose-flavored coffee preparation with vanilla ice cream",
-        category: "Specialty",
+        id: 24,
+        name: "Americano",
+        price: "₹100/₹150",
+        description:
+          "Hot/Iced classic filter coffee decoction to boost your spirits",
+        category: "Coffee",
+        variants: ["Hot", "Iced"],
         image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",
       },
       {
-        id: 36,
-        name: "Italian Soda",
-        price: "₹150.00",
+        id: 25,
+        name: "Filter Coffee Latte",
+        price: "₹150/₹200",
+        description: "Hot/Iced classic filter coffee with a latte foam twist",
+        category: "Coffee",
+        variants: ["Hot", "Iced"],
+        image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1f4d6",
+      },
+      {
+        id: 26,
+        name: "Cold Coffee",
+        price: "₹200/₹180",
         description:
-          "Classic Italian soda with sparkling water and flavored syrup",
+          "Latte/Soda old school coffee infused with cold milk and ice or sparkling water",
+        category: "Cold Beverages",
+        variants: ["Latte", "Soda"],
+        image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735",
+      },
+      {
+        id: 27,
+        name: "Lemon & Mint Soda",
+        price: "₹160",
+        description: "Fresh cut lemon, mint, and sparkling water",
         category: "Cold Beverages",
         image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd",
       },
       {
-        id: 37,
-        name: "Herbal Tea",
-        price: "₹180.00",
-        description: "Soothing herbal tea blend with natural herbs and flavors",
-        category: "Hot Beverages",
-        image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc",
-      },
-      {
-        id: 38,
-        name: "Hot Chocolate",
-        price: "₹150.00",
-        description: "Rich and creamy hot chocolate topped with froth",
-        category: "Hot Beverages",
-        image: "https://images.unsplash.com/photo-1517578239113-b03992dcdd25",
-      },
-      {
-        id: 39,
+        id: 28,
         name: "Rose Milk",
-        price: "₹150.00",
-        description:
-          "Refreshing rose-flavored milk drink, perfect for any time of day",
+        price: "₹150",
+        description: "Classic rose milk served cold",
         category: "Cold Beverages",
         image: "https://images.unsplash.com/photo-1563636619-e9143da7973b",
+      },
+      {
+        id: 29,
+        name: "Watermelon Slushie",
+        price: "₹250",
+        description:
+          "Blended watermelon with a dash of lime and sparkling water",
+        category: "Cold Beverages",
+        image: "https://images.unsplash.com/photo-1546173159-315724a31696",
+      },
+      {
+        id: 30,
+        name: "Hot Chocolate",
+        price: "₹200",
+        description: "Silky and hot delectable cocoa mixed in milk and cream",
+        category: "Hot Beverages",
+        image: "https://images.unsplash.com/photo-1517578239113-b03992dcdd25",
       },
     ],
   },
   seasonal: {
-    title: "Seasonal Specials",
+    title: "Sweet Treats",
     items: [
       {
-        id: 46,
+        id: 31,
         name: "Brownie",
-        price: "₹100.00",
+        price: "₹150",
         description:
-          "Rich chocolate brownie baked fresh daily with premium cocoa",
+          "Egg homemade brownie with a slight warm, gooey fresh batch finish",
         category: "Dessert",
         image: "https://images.unsplash.com/photo-1607920591413-4ec007e70023",
       },
       {
-        id: 47,
+        id: 32,
         name: "Brownie & Ice Cream",
-        price: "₹200.00",
+        price: "₹250",
         description: "Warm chocolate brownie served with vanilla ice cream",
         category: "Dessert",
         image: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51",
-        popular: true,
       },
       {
-        id: 48,
-        name: "Watermelon Slushie",
-        price: "₹200.00",
+        id: 33,
+        name: "Thick-shake",
+        price: "₹250/₹250/₹300",
         description:
-          "Refreshing watermelon slushie perfect for hot summer days",
-        category: "Seasonal",
-        image: "https://images.unsplash.com/photo-1546173159-315724a31696",
+          "Coffee/Chocolate/Mocha creamy frozen milk crushed and blended with your chosen flavour",
+        category: "Dessert",
+        variants: ["Coffee", "Chocolate", "Mocha"],
+        image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699",
+      },
+      {
+        id: 34,
+        name: "Affogato Filter/Rose",
+        price: "₹250/₹220",
+        description:
+          "Creamy vanilla ice cream with a shot of filter coffee espresso or natural rose syrup",
+        category: "Dessert",
+        variants: ["Filter Coffee Espresso", "Natural Rose Syrup"],
+        image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",
+      },
+    ],
+  },
+  addOns: {
+    title: "Add Ons",
+    items: [
+      {
+        id: 35,
+        name: "Spicy",
+        price: "₹20",
+        description: "Add a spicy kick to your dish",
+        category: "Add On",
+        image: "https://images.unsplash.com/photo-1589302168068-964664d93dc0",
+      },
+      {
+        id: 36,
+        name: "Cheese",
+        price: "₹50",
+        description: "Extra cheese topping",
+        category: "Add On",
+        image: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d",
+      },
+      {
+        id: 37,
+        name: "Mushroom",
+        price: "₹60",
+        description: "Extra sauteed mushrooms",
+        category: "Add On",
+        image: "https://images.unsplash.com/photo-1504545102780-26774c1bb073",
+      },
+      {
+        id: 38,
+        name: "Chicken",
+        price: "₹100",
+        description: "Extra chicken portion",
+        category: "Add On",
+        image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791",
+      },
+      {
+        id: 39,
+        name: "Egg",
+        price: "₹50",
+        description: "Add one egg",
+        category: "Add On",
+        image: "https://images.unsplash.com/photo-1506976785307-8732e854ad03",
       },
     ],
   },
@@ -733,6 +765,8 @@ const AnimatedMenuCards = () => {
     }
     return tags;
   };
+
+  const getItemVariants = (item) => item?.variants || [];
 
   const openModal = (item) => {
     if (!item) return;
@@ -859,6 +893,7 @@ const AnimatedMenuCards = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {currentItems.map((item, index) => {
                 const tags = getItemTags(item);
+                const variants = getItemVariants(item);
                 return (
                   <motion.button
                     key={item.id}
@@ -883,7 +918,15 @@ const AnimatedMenuCards = () => {
                       {item.description}
                     </p>
 
-                    <div className="flex items-center gap-2 mt-auto">
+                    <div className="flex flex-wrap items-center gap-2 mt-auto">
+                      {variants.map((variant) => (
+                        <span
+                          key={`${item.id}-${variant}`}
+                          className="inline-flex items-center rounded-lg px-3 py-1 text-xs font-semibold bg-[#EFC1A9]/15 text-[#EFC1A9] border border-[#EFC1A9]/30"
+                        >
+                          {variant}
+                        </span>
+                      ))}
                       {tags.map((tag) => {
                         const isPopularTag = tag
                           .toLowerCase()
@@ -974,6 +1017,23 @@ const AnimatedMenuCards = () => {
                 >
                   {selectedItem.description}
                 </motion.p>
+                {getItemVariants(selectedItem).length > 0 && (
+                  <motion.div
+                    className="flex flex-wrap gap-2 mb-6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.35 }}
+                  >
+                    {getItemVariants(selectedItem).map((variant) => (
+                      <span
+                        key={`${selectedItem.id}-${variant}`}
+                        className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold bg-[#EFC1A9]/15 text-[#EFC1A9] border border-[#EFC1A9]/30"
+                      >
+                        {variant}
+                      </span>
+                    ))}
+                  </motion.div>
+                )}
                 <motion.div
                   className="flex flex-wrap items-center gap-3"
                   initial={{ opacity: 0 }}

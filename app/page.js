@@ -12,6 +12,7 @@ import {
   Phone,
   Mail,
   MapPin,
+  MessageCircle,
   Heart,
   Calendar,
   Clock,
@@ -175,6 +176,7 @@ const Navigation = () => {
 // Hero Section Component
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [isHeroTextVisible, setIsHeroTextVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -182,27 +184,44 @@ const HeroSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setIsHeroTextVisible(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
   return (
     <section className="relative h-screen overflow-hidden">
-      <div
-        className="parallax-bg absolute inset-0 w-full h-full"
+      <img
+        src="https://img.sanishtech.com/u/1c6462b97fb1e6542b3e369cbb47e873.jpeg"
+        alt="Isai hero background"
+        className="parallax-bg absolute inset-0 h-full w-full object-cover object-center"
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1757534932627-539a974d4b93')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          transform: `translateY(${scrollY * 0.5}px)`,
+          transform: `translateY(${scrollY * 0.5}px) scale(1.08)`,
+          transformOrigin: "center center",
+          objectPosition: "54% 58%",
         }}
       />
-      <div className="absolute inset-0 bg-black bg-opacity-30" />
-      <div className="relative z-10 flex items-center justify-center h-full text-center">
-        <div className="max-w-4xl px-4">
-          <h1 className="isai-font text-8xl md:text-9xl font-bold text-white mb-4 animate-fade-in">
-            Isai
-          </h1>
-          <p className="text-2xl md:text-3xl text-white font-light tracking-wider">
-            the art café
-          </p>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/34 via-black/18 to-black/42" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at center, rgba(0,0,0,0) 80%, rgba(0,0,0,0.32) 100%)",
+        }}
+      />
+      <div className="relative z-10 flex h-full items-end px-6 pb-16 sm:px-10 sm:pb-20 lg:px-16 lg:pb-24">
+        <div
+          className={`max-w-xl transition-all duration-1000 ease-out ${
+            isHeroTextVisible
+              ? "translate-y-0 opacity-100"
+              : "translate-y-4 opacity-0"
+          }`}
+        >
+          <img
+            src="https://img.sanishtech.com/u/61bc0caccb93f04084771bff8a31133f.png"
+            alt="Isai Cafe The Art Cafe"
+            className="w-[220px] sm:w-[260px] md:w-[300px] h-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)]"
+          />
         </div>
       </div>
     </section>
@@ -345,8 +364,8 @@ const OpeningHoursBento = () => {
   const hours = [
     {
       day: "Monday",
-      hours: "CLOSED",
-      isClosed: true,
+      hours: "17:00 - 22:00",
+      isClosed: false,
       offset: -25,
       delay: 0,
       waveSpeed: 1.2,
@@ -354,8 +373,8 @@ const OpeningHoursBento = () => {
     },
     {
       day: "Tuesday",
-      hours: "06:00 - 16:00",
-      isClosed: false,
+      hours: "CLOSED",
+      isClosed: true,
       offset: 35,
       delay: 150,
       waveSpeed: 1.6,
@@ -363,7 +382,7 @@ const OpeningHoursBento = () => {
     },
     {
       day: "Wednesday",
-      hours: "06:00 - 16:00",
+      hours: "17:00 - 22:00",
       isClosed: false,
       offset: -30,
       delay: 300,
@@ -372,7 +391,7 @@ const OpeningHoursBento = () => {
     },
     {
       day: "Thursday",
-      hours: "06:00 - 16:00",
+      hours: "17:00 - 22:00",
       isClosed: false,
       offset: 40,
       delay: 450,
@@ -381,7 +400,7 @@ const OpeningHoursBento = () => {
     },
     {
       day: "Friday",
-      hours: "06:00 - 16:00",
+      hours: "17:00 - 22:00",
       isClosed: false,
       offset: -35,
       delay: 600,
@@ -390,7 +409,7 @@ const OpeningHoursBento = () => {
     },
     {
       day: "Saturday",
-      hours: "06:00 - 16:00",
+      hours: "11:00 - 15:00, 17:00 - 22:00",
       isClosed: false,
       offset: 30,
       delay: 750,
@@ -399,8 +418,8 @@ const OpeningHoursBento = () => {
     },
     {
       day: "Sunday",
-      hours: "CLOSED",
-      isClosed: true,
+      hours: "11:00 - 15:00, 17:00 - 22:00",
+      isClosed: false,
       offset: -40,
       delay: 900,
       waveSpeed: 1.5,
@@ -646,7 +665,7 @@ const CulinaryExperience = () => {
               className="inline-flex items-center gap-3 border-2 border-[#EFC1A9] text-[#EFC1A9] rounded-full px-10 py-5 shadow-2xl hover:shadow-3xl transition-all duration-500 font-bold text-xl hover:scale-105 hover:bg-[#EFC1A9] hover:text-[#1A1A1A] group"
             >
               <Calendar className="w-6 h-6" />
-              <span>Reserve a Table</span>
+              <span>Book a Event</span>
             </Link>
           </div>
         </div>
@@ -685,7 +704,8 @@ const CulinaryExperience = () => {
         <div className="mt-20 text-center">
           <div className="w-32 h-1 bg-[#EFC1A9] rounded-full mx-auto opacity-60"></div>
           <p className="text-white text-lg mt-8 opacity-80">
-            Open Tuesday to Saturday • 6:00 AM - 4:00 PM
+            Mon, Wed, Thu, Fri: 5:00 PM - 10:00 PM • Weekend: 11:00 AM - 3:00 PM
+            & 5:00 PM - 10:00 PM
           </p>
         </div>
       </div>
@@ -746,15 +766,35 @@ const InstagramSection = () => {
             special
           </p>
 
-          <div className="flex justify-center">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
               href="https://www.instagram.com/isai.artcafe/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-[#EFC1A9] text-[#1A1A1A] rounded-full px-8 py-4 shadow-lg hover:bg-[#d4b088] transition-all duration-200 font-semibold text-lg"
+              className="inline-flex items-center justify-center gap-3 bg-[#EFC1A9] text-[#1A1A1A] rounded-full px-8 py-4 shadow-lg hover:bg-[#d4b088] transition-all duration-200 font-semibold text-lg"
             >
               <Instagram size={24} />
-              <span>Follow @isai.artcafe</span>
+              <span>Instagram</span>
+            </a>
+
+            <a
+              href="https://wa.me/918667273422?text=Hello%20Isai%20Caf%C3%A9%2C%20I%27d%20like%20to%20enquire%20about%20an%20event."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 border-2 border-[#EFC1A9] text-[#EFC1A9] rounded-full px-8 py-4 hover:bg-[#EFC1A9] hover:text-[#1A1A1A] transition-all duration-200 font-semibold text-lg"
+            >
+              <MessageCircle size={24} />
+              <span>WhatsApp</span>
+            </a>
+
+            <a
+              href="https://www.youtube.com/@isaiartcafe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-3 border-2 border-white/20 text-white rounded-full px-8 py-4 hover:border-[#EFC1A9] hover:text-[#EFC1A9] transition-all duration-200 font-semibold text-lg"
+            >
+              <Youtube size={24} />
+              <span>YouTube</span>
             </a>
           </div>
         </div>

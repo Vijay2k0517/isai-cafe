@@ -267,15 +267,21 @@ const EventsHero = () => {
 
 // Event Booking Form Component
 const EventBookingForm = () => {
+  const SPACE_CAPACITY_MAP = {
+    "Media Room": "6-8 members",
+    "Co-working Space": "6-8 members",
+    "Main Hall": "20-25 members",
+  };
+
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
+    space: "",
+    accommodationSize: "",
     date: "",
     time: "",
-    partySize: "",
-    eventType: "",
+    duration: "",
     specialRequests: "",
   });
   const ref = useRef();
@@ -304,6 +310,9 @@ const EventBookingForm = () => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
+      ...(field === "space"
+        ? { accommodationSize: SPACE_CAPACITY_MAP[value] || "" }
+        : {}),
     }));
   };
 
@@ -314,15 +323,15 @@ I would like to book an event and here are my details:
 
 Event Booking Inquiry:
 • Name: ${formData.name}
-• Email: ${formData.email}
 • Phone: ${formData.phone}
+• Preferred Space: ${formData.space}
+• Accommodation Size: ${formData.accommodationSize}
 • Preferred Date: ${formData.date}
 • Preferred Time: ${formData.time}
-• Party Size: ${formData.partySize} people
-• Event Type: ${formData.eventType}
+• Duration Needed: ${formData.duration}
 ${
   formData.specialRequests
-    ? `• Special Requests: ${formData.specialRequests}`
+    ? `• Special Mention: ${formData.specialRequests}`
     : ""
 }
 
@@ -346,12 +355,12 @@ Thank you.`;
     // Reset form after submission
     setFormData({
       name: "",
-      email: "",
       phone: "",
+      space: "",
+      accommodationSize: "",
       date: "",
       time: "",
-      partySize: "",
-      eventType: "",
+      duration: "",
       specialRequests: "",
     });
   };
@@ -553,29 +562,6 @@ Thank you.`;
                         </div>
                         <div className="space-y-2 group">
                           <Label
-                            htmlFor="email"
-                            className="text-white group-hover:text-[#EFC1A9] transition-colors duration-300 text-sm"
-                          >
-                            Email *
-                          </Label>
-                          <Input
-                            id="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={(e) =>
-                              handleInputChange("email", e.target.value)
-                            }
-                            required
-                            placeholder="your@email.com"
-                            className="bg-[#1a1a1a] border-[#3a3a3a] text-white placeholder:text-white/50 focus:border-[#EFC1A9] transition-all duration-300 hover:border-[#EFC1A9]/50 text-sm"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Contact & Party Size */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="space-y-2 group">
-                          <Label
                             htmlFor="phone"
                             className="text-white group-hover:text-[#EFC1A9] transition-colors duration-300 text-sm"
                           >
@@ -593,39 +579,59 @@ Thank you.`;
                             className="bg-[#1a1a1a] border-[#3a3a3a] text-white placeholder:text-white/50 focus:border-[#EFC1A9] transition-all duration-300 hover:border-[#EFC1A9]/50 text-sm"
                           />
                         </div>
+                      </div>
+
+                      {/* Space & Fixed Capacity */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2 group">
                           <Label
-                            htmlFor="partySize"
+                            htmlFor="space"
                             className="text-white group-hover:text-[#EFC1A9] transition-colors duration-300 text-sm"
                           >
-                            Party Size *
+                            Space to Accommodate *
                           </Label>
                           <Select
+                            value={formData.space}
                             onValueChange={(value) =>
-                              handleInputChange("partySize", value)
+                              handleInputChange("space", value)
                             }
                           >
                             <SelectTrigger className="bg-[#1a1a1a] border-[#3a3a3a] text-white focus:border-[#EFC1A9] transition-all duration-300 hover:border-[#EFC1A9]/50 group-hover:border-[#EFC1A9]/30 text-sm">
-                              <SelectValue placeholder="Number of guests" />
+                              <SelectValue placeholder="Select space" />
                             </SelectTrigger>
                             <SelectContent className="bg-[#2a2a2a] border-[#3a3a3a] text-white">
-                              <SelectItem value="2-5" className="text-sm">
-                                2-5 people
+                              <SelectItem value="Main Hall" className="text-sm">
+                                Main Hall
                               </SelectItem>
-                              <SelectItem value="6-10" className="text-sm">
-                                6-10 people
+                              <SelectItem
+                                value="Co-working Space"
+                                className="text-sm"
+                              >
+                                Co-working Space
                               </SelectItem>
-                              <SelectItem value="11-20" className="text-sm">
-                                11-20 people
-                              </SelectItem>
-                              <SelectItem value="21-50" className="text-sm">
-                                21-50 people
-                              </SelectItem>
-                              <SelectItem value="50+" className="text-sm">
-                                50+ people
+                              <SelectItem
+                                value="Media Room"
+                                className="text-sm"
+                              >
+                                Media Room
                               </SelectItem>
                             </SelectContent>
                           </Select>
+                        </div>
+                        <div className="space-y-2 group">
+                          <Label
+                            htmlFor="accommodationSize"
+                            className="text-white group-hover:text-[#EFC1A9] transition-colors duration-300 text-sm"
+                          >
+                            Accommodation Size
+                          </Label>
+                          <Input
+                            id="accommodationSize"
+                            value={formData.accommodationSize}
+                            readOnly
+                            placeholder="Select a space to view capacity"
+                            className="bg-[#1a1a1a] border-[#3a3a3a] text-white placeholder:text-white/50 focus:border-[#EFC1A9] transition-all duration-300 hover:border-[#EFC1A9]/50 text-sm"
+                          />
                         </div>
                       </div>
 
@@ -658,6 +664,7 @@ Thank you.`;
                             Preferred Time *
                           </Label>
                           <Select
+                            value={formData.time}
                             onValueChange={(value) =>
                               handleInputChange("time", value)
                             }
@@ -678,54 +685,50 @@ Thank you.`;
                             </SelectContent>
                           </Select>
                         </div>
+                        <div className="space-y-2 group md:col-span-2">
+                          <Label
+                            htmlFor="duration"
+                            className="text-white group-hover:text-[#EFC1A9] transition-colors duration-300 text-sm"
+                          >
+                            How Many Hours *
+                          </Label>
+                          <Select
+                            value={formData.duration}
+                            onValueChange={(value) =>
+                              handleInputChange("duration", value)
+                            }
+                          >
+                            <SelectTrigger className="bg-[#1a1a1a] border-[#3a3a3a] text-white focus:border-[#EFC1A9] transition-all duration-300 hover:border-[#EFC1A9]/50 group-hover:border-[#EFC1A9]/30 text-sm">
+                              <SelectValue placeholder="Select hours" />
+                            </SelectTrigger>
+                            <SelectContent className="bg-[#2a2a2a] border-[#3a3a3a] text-white">
+                              <SelectItem value="1 hour" className="text-sm">
+                                1 hour
+                              </SelectItem>
+                              <SelectItem value="2 hours" className="text-sm">
+                                2 hours
+                              </SelectItem>
+                              <SelectItem value="3 hours" className="text-sm">
+                                3 hours
+                              </SelectItem>
+                              <SelectItem value="4 hours" className="text-sm">
+                                4 hours
+                              </SelectItem>
+                              <SelectItem value="5+ hours" className="text-sm">
+                                5+ hours
+                              </SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
                       </div>
 
-                      {/* Event Type */}
-                      <div className="space-y-2 group">
-                        <Label
-                          htmlFor="eventType"
-                          className="text-white group-hover:text-[#EFC1A9] transition-colors duration-300 text-sm"
-                        >
-                          Event Type *
-                        </Label>
-                        <Select
-                          onValueChange={(value) =>
-                            handleInputChange("eventType", value)
-                          }
-                        >
-                          <SelectTrigger className="bg-[#1a1a1a] border-[#3a3a3a] text-white focus:border-[#EFC1A9] transition-all duration-300 hover:border-[#EFC1A9]/50 group-hover:border-[#EFC1A9]/30 text-sm">
-                            <SelectValue placeholder="Select event type" />
-                          </SelectTrigger>
-                          <SelectContent className="bg-[#2a2a2a] border-[#3a3a3a] text-white">
-                            <SelectItem value="birthday" className="text-sm">
-                              Birthday Party
-                            </SelectItem>
-                            <SelectItem value="anniversary" className="text-sm">
-                              Anniversary
-                            </SelectItem>
-                            <SelectItem value="meeting" className="text-sm">
-                              Business Meeting
-                            </SelectItem>
-                            <SelectItem value="celebration" className="text-sm">
-                              Celebration
-                            </SelectItem>
-                            <SelectItem value="workshop" className="text-sm">
-                              Workshop/Class
-                            </SelectItem>
-                            <SelectItem value="other" className="text-sm">
-                              Other
-                            </SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      {/* Special Requests */}
+                      {/* Special Mention */}
                       <div className="space-y-2 group">
                         <Label
                           htmlFor="specialRequests"
                           className="text-white group-hover:text-[#EFC1A9] transition-colors duration-300 text-sm"
                         >
-                          Special Requests
+                          Special Mention
                         </Label>
                         <Textarea
                           id="specialRequests"
@@ -733,7 +736,7 @@ Thank you.`;
                           onChange={(e) =>
                             handleInputChange("specialRequests", e.target.value)
                           }
-                          placeholder="Any special requirements, dietary restrictions, or additional information..."
+                          placeholder="Any special mention or additional information..."
                           rows={3}
                           className="bg-[#1a1a1a] border-[#3a3a3a] text-white placeholder:text-white/50 focus:border-[#EFC1A9] transition-all duration-300 hover:border-[#EFC1A9]/50 resize-none text-sm"
                         />
@@ -747,12 +750,11 @@ Thank you.`;
                         className="w-full bg-[#EFC1A9] hover:bg-[#EFC1A9]/90 text-[#1a1a1a] font-semibold py-4 text-base transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-[#EFC1A9]/30 group"
                         disabled={
                           !formData.name ||
-                          !formData.email ||
                           !formData.phone ||
+                          !formData.space ||
                           !formData.date ||
                           !formData.time ||
-                          !formData.partySize ||
-                          !formData.eventType
+                          !formData.duration
                         }
                       >
                         <MessageCircle className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-300" />
