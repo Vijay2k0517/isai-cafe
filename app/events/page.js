@@ -214,7 +214,7 @@ const EventsHero = () => {
         className="parallax-bg absolute inset-0 w-full h-full"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1670978738746-698556e69084')",
+            "url('https://img.sanishtech.com/u/942460e6d1bd3fba6b0e9e350fdd25e8.jpeg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           // transform: `translateY(${scrollY * 0.5}px)`,

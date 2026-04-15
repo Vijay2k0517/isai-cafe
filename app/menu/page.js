@@ -398,7 +398,7 @@ const menuCategories = {
         description:
           "Sweet/Savory fluffy buttery egg-soaked bread toasted to perfection",
         category: "Breakfast",
-        image: "https://images.unsplash.com/photo-1484723091739-30a097e8f929",
+        image: "https://img.sanishtech.com/u/048d2c0ba51ef01f14adb3ea690eeb57.jpg",
       },
       {
         id: 11,
@@ -407,7 +407,7 @@ const menuCategories = {
         description:
           "Eggs of your choice served with a side of garlic butter toast",
         category: "Breakfast",
-        image: "https://images.unsplash.com/photo-1525351484163-7529414344d8",
+        image: "https://img.sanishtech.com/u/8f89635522cc1430a6a2f57f72526e87.jpg",
       },
       {
         id: 12,
@@ -415,7 +415,7 @@ const menuCategories = {
         price: "₹200",
         description: "Flattened rice sauteed with onions, peanuts, and spices",
         category: "Breakfast",
-        image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84",
+        image: "https://img.sanishtech.com/u/29006a2a38c44daf22eb986390ff75c7.jpg",
       },
     ],
   },
@@ -428,7 +428,7 @@ const menuCategories = {
         price: "₹250",
         description: "Saucy garlic noodles wrapped in a fluffy omelette",
         category: "Signature",
-        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624",
+        image: "https://img.sanishtech.com/u/9e26df5c65e1ff718e39ba2efa8540c6.jpg",
       },
       {
         id: 14,
@@ -436,7 +436,7 @@ const menuCategories = {
         price: "₹220",
         description: "Butter sauteed mushrooms wrapped in a fluffy omelette",
         category: "Signature",
-        image: "https://images.unsplash.com/photo-1608039831741-8e4a4a3d77b8",
+        image: "https://img.sanishtech.com/u/6491c3b136d08a24929dd7640deac4e8.jpg",
       },
       {
         id: 15,
@@ -513,7 +513,7 @@ const menuCategories = {
           "Hot/Iced classic black tea brewed to perfection, served with lime and honey",
         category: "Hot Beverages",
         variants: ["Hot", "Iced"],
-        image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574",
+        image: "https://img.sanishtech.com/u/e5e6a10f9331d3de71c3ff97d8790af0.jpg",
       },
       {
         id: 22,
@@ -587,7 +587,7 @@ const menuCategories = {
         description:
           "Blended watermelon with a dash of lime and sparkling water",
         category: "Cold Beverages",
-        image: "https://images.unsplash.com/photo-1546173159-315724a31696",
+        image: "https://img.sanishtech.com/u/3e83ae099353d0adc4277ef58c5744ca.jpg",
       },
       {
         id: 30,
@@ -627,7 +627,7 @@ const menuCategories = {
           "Coffee/Chocolate/Mocha creamy frozen milk crushed and blended with your chosen flavour",
         category: "Dessert",
         variants: ["Coffee", "Chocolate", "Mocha"],
-        image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699",
+        image: "https://img.sanishtech.com/u/cfd5fa88a5da87dc7a51fd4186224731.jpg",
       },
       {
         id: 34,
@@ -637,7 +637,7 @@ const menuCategories = {
           "Creamy vanilla ice cream with a shot of filter coffee espresso or natural rose syrup",
         category: "Dessert",
         variants: ["Filter Coffee Espresso", "Natural Rose Syrup"],
-        image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",
+        image: "https://img.sanishtech.com/u/41107874dcd862384edfd092a4f4cd7b.jpg",
       },
     ],
   },
@@ -971,7 +971,7 @@ const AnimatedMenuCards = () => {
               exit={{ opacity: 0 }}
             />
             <motion.div
-              className="relative z-10 max-w-3xl w-full bg-[#1E1E1E] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              className="relative z-10 max-w-xl w-[min(90vw,36rem)] max-h-[84vh] bg-[#1E1E1E] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
               initial={{ scale: 0.9, y: 20, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.9, y: 20, opacity: 0 }}
@@ -985,32 +985,41 @@ const AnimatedMenuCards = () => {
               >
                 <X className="w-5 h-5 text-white" />
               </motion.button>
-              <div className="relative h-56 sm:h-64">
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] max-h-[30vh] overflow-hidden bg-[#141414]">
                 <motion.img
                   src={selectedItem.image}
                   alt={selectedItem.name}
-                  className="w-full h-full object-cover"
-                  initial={{ scale: 1.1 }}
+                  className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-70"
+                  initial={{ scale: 1.05 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                />
+                <div className="absolute inset-0 bg-black/15" />
+                <motion.img
+                  src={selectedItem.image}
+                  alt={selectedItem.name}
+                  className="relative z-10 w-full h-full object-contain"
+                  initial={{ scale: 1.08 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5 }}
                 />
               </div>
-              <div className="p-6 sm:p-8">
+              <div className="p-5 sm:p-6">
                 <motion.div
-                  className="flex justify-between items-start mb-4"
+                  className="flex justify-between items-start mb-3"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <h2 className="text-3xl font-bold text-[#EFC1A9]">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-[#EFC1A9]">
                     {selectedItem.name}
                   </h2>
-                  <span className="text-2xl font-bold text-[#EFC1A9]">
+                  <span className="text-xl sm:text-2xl font-bold text-[#EFC1A9]">
                     {selectedItem.price}
                   </span>
                 </motion.div>
                 <motion.p
-                  className="text-white/80 text-lg mb-6 leading-relaxed"
+                  className="text-white/80 text-base sm:text-lg mb-4 leading-relaxed"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
@@ -1019,7 +1028,7 @@ const AnimatedMenuCards = () => {
                 </motion.p>
                 {getItemVariants(selectedItem).length > 0 && (
                   <motion.div
-                    className="flex flex-wrap gap-2 mb-6"
+                    className="flex flex-wrap gap-2 mb-4"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.35 }}
@@ -1035,17 +1044,17 @@ const AnimatedMenuCards = () => {
                   </motion.div>
                 )}
                 <motion.div
-                  className="flex flex-wrap items-center gap-3"
+                  className="flex flex-wrap items-center gap-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <span className="px-4 py-2 bg-[#2B2B2B] text-white rounded-full text-sm border border-white/10">
+                  <span className="px-3 py-1.5 bg-[#2B2B2B] text-white rounded-full text-xs sm:text-sm border border-white/10">
                     {selectedItem.category}
                   </span>
                   {selectedItem.popular && (
                     <motion.span
-                      className="px-4 py-2 bg-yellow-500 text-white rounded-full text-sm flex items-center gap-2 border border-yellow-600"
+                      className="px-3 py-1.5 bg-yellow-500 text-white rounded-full text-xs sm:text-sm flex items-center gap-2 border border-yellow-600"
                       animate={{ scale: [1, 1.05, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     >
@@ -1056,7 +1065,7 @@ const AnimatedMenuCards = () => {
                 </motion.div>
 
                 <motion.div
-                  className="mt-6 rounded-xl border border-white/10 bg-[#2B2B2B] px-4 py-3 flex items-center gap-2 text-white/85"
+                  className="mt-4 rounded-xl border border-white/10 bg-[#2B2B2B] px-4 py-3 flex items-center gap-2 text-white/85"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.45 }}
@@ -1066,14 +1075,6 @@ const AnimatedMenuCards = () => {
                     Preparation time: 10-15 minutes
                   </span>
                 </motion.div>
-
-                <motion.button
-                  className="mt-6 w-full sm:w-auto px-6 py-3 rounded-full bg-[#EFC1A9] text-[#1E1E1E] font-bold hover:bg-[#d4b088] transition-colors"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Place an order
-                </motion.button>
               </div>
             </motion.div>
           </motion.div>
