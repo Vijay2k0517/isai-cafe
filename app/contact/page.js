@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { motion, AnimatePresence } from "framer-motion";
+// Image served from public folder
 
 import {
   Instagram,
@@ -191,8 +192,7 @@ const ContactHero = () => {
       <div
         className="parallax-bg absolute inset-0 w-full h-full"
         style={{
-          backgroundImage:
-            "url('https://images.pexels.com/photos/8937347/pexels-photo-8937347.jpeg')",
+          backgroundImage: `url('/isai-pic/hero/DSC_0737.jpg.jpeg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           // transform: `translateY(${scrollY * 0.5}px)`,

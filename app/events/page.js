@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import eventsHeroImage from "@/isai-pic/hero/WhatsApp Image 2026-04-13 at 6.54.45 PM.jpeg";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -213,8 +214,7 @@ const EventsHero = () => {
       <div
         className="parallax-bg absolute inset-0 w-full h-full"
         style={{
-          backgroundImage:
-            "url('https://img.sanishtech.com/u/942460e6d1bd3fba6b0e9e350fdd25e8.jpeg')",
+          backgroundImage: `url('${eventsHeroImage.src}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           // transform: `translateY(${scrollY * 0.5}px)`,

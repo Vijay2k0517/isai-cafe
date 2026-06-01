@@ -22,6 +22,16 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import affogatoImage from "@/isai-pic/menu/affogato.jpg";
+import blackTeaIcedImage from "@/isai-pic/menu/black tea (iced) .jpg";
+import chickenWalnutSaladImage from "@/isai-pic/menu/chicken walnut salad.jpg";
+import eggWrappedNoodlesImage from "@/isai-pic/menu/egg wrapped noodles.jpg";
+import eggWrappedShroomsImage from "@/isai-pic/menu/egg wrapped shrooms.jpg";
+import eggsAndToastImage from "@/isai-pic/menu/eggs and toast.jpg";
+import frenchToastImage from "@/isai-pic/menu/french toast.jpg";
+import pohaImage from "@/isai-pic/menu/poha.jpg";
+import thickshakeImage from "@/isai-pic/menu/thickshake.jpg";
+import watermelonSlushieImage from "@/isai-pic/menu/watermelon slushie .jpg";
 
 // Navigation Component
 const Navigation = () => {
@@ -366,7 +376,7 @@ const menuCategories = {
         description:
           "Juicy diced chicken and crunchy walnuts with salad and vinaigrette",
         category: "Salad",
-        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+        image: chickenWalnutSaladImage.src,
       },
     ],
   },
@@ -398,7 +408,7 @@ const menuCategories = {
         description:
           "Sweet/Savory fluffy buttery egg-soaked bread toasted to perfection",
         category: "Breakfast",
-        image: "https://img.sanishtech.com/u/048d2c0ba51ef01f14adb3ea690eeb57.jpg",
+        image: frenchToastImage.src,
       },
       {
         id: 11,
@@ -407,7 +417,7 @@ const menuCategories = {
         description:
           "Eggs of your choice served with a side of garlic butter toast",
         category: "Breakfast",
-        image: "https://img.sanishtech.com/u/8f89635522cc1430a6a2f57f72526e87.jpg",
+        image: eggsAndToastImage.src,
       },
       {
         id: 12,
@@ -415,7 +425,7 @@ const menuCategories = {
         price: "₹200",
         description: "Flattened rice sauteed with onions, peanuts, and spices",
         category: "Breakfast",
-        image: "https://img.sanishtech.com/u/29006a2a38c44daf22eb986390ff75c7.jpg",
+        image: pohaImage.src,
       },
     ],
   },
@@ -428,7 +438,7 @@ const menuCategories = {
         price: "₹250",
         description: "Saucy garlic noodles wrapped in a fluffy omelette",
         category: "Signature",
-        image: "https://img.sanishtech.com/u/9e26df5c65e1ff718e39ba2efa8540c6.jpg",
+        image: eggWrappedNoodlesImage.src,
       },
       {
         id: 14,
@@ -436,7 +446,7 @@ const menuCategories = {
         price: "₹220",
         description: "Butter sauteed mushrooms wrapped in a fluffy omelette",
         category: "Signature",
-        image: "https://img.sanishtech.com/u/6491c3b136d08a24929dd7640deac4e8.jpg",
+        image: eggWrappedShroomsImage.src,
       },
       {
         id: 15,
@@ -513,7 +523,7 @@ const menuCategories = {
           "Hot/Iced classic black tea brewed to perfection, served with lime and honey",
         category: "Hot Beverages",
         variants: ["Hot", "Iced"],
-        image: "https://img.sanishtech.com/u/e5e6a10f9331d3de71c3ff97d8790af0.jpg",
+        image: blackTeaIcedImage.src,
       },
       {
         id: 22,
@@ -587,7 +597,7 @@ const menuCategories = {
         description:
           "Blended watermelon with a dash of lime and sparkling water",
         category: "Cold Beverages",
-        image: "https://img.sanishtech.com/u/3e83ae099353d0adc4277ef58c5744ca.jpg",
+        image: watermelonSlushieImage.src,
       },
       {
         id: 30,
@@ -627,7 +637,7 @@ const menuCategories = {
           "Coffee/Chocolate/Mocha creamy frozen milk crushed and blended with your chosen flavour",
         category: "Dessert",
         variants: ["Coffee", "Chocolate", "Mocha"],
-        image: "https://img.sanishtech.com/u/cfd5fa88a5da87dc7a51fd4186224731.jpg",
+        image: thickshakeImage.src,
       },
       {
         id: 34,
@@ -637,7 +647,7 @@ const menuCategories = {
           "Creamy vanilla ice cream with a shot of filter coffee espresso or natural rose syrup",
         category: "Dessert",
         variants: ["Filter Coffee Espresso", "Natural Rose Syrup"],
-        image: "https://img.sanishtech.com/u/41107874dcd862384edfd092a4f4cd7b.jpg",
+        image: affogatoImage.src,
       },
     ],
   },
@@ -955,6 +965,7 @@ const AnimatedMenuCards = () => {
       </AnimatePresence>
 
       {/* Modal */}
+      {/* Modal */}
       <AnimatePresence>
         {isModalOpen && selectedItem && (
           <motion.div
@@ -962,119 +973,328 @@ const AnimatedMenuCards = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
+            {/* Glassmorphism backdrop */}
             <motion.div
-              className="absolute inset-0 backdrop-blur-sm bg-black/60"
+              className="absolute inset-0"
+              style={{
+                background: "rgba(0,0,0,0.78)",
+                backdropFilter: "blur(14px)",
+                WebkitBackdropFilter: "blur(14px)",
+              }}
               onClick={() => setIsModalOpen(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
+
+            {/* Modal Container */}
             <motion.div
-              className="relative z-10 max-w-xl w-[min(90vw,36rem)] max-h-[84vh] bg-[#1E1E1E] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
-              initial={{ scale: 0.9, y: 20, opacity: 0 }}
+              className="relative z-10 w-full flex flex-col"
+              style={{
+                maxWidth: "860px",
+                background: "#171717",
+                borderRadius: "24px",
+                border: "1px solid rgba(232,192,168,0.2)",
+                boxShadow:
+                  "0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(232,192,168,0.06) inset",
+                // maxHeight: "92vh",
+                // overflowY: "auto",
+              }}
+              initial={{ scale: 0.92, y: 28, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
-              exit={{ scale: 0.9, y: 20, opacity: 0 }}
-              transition={{ type: "spring", damping: 25 }}
+              exit={{ scale: 0.92, y: 28, opacity: 0 }}
+              transition={{ type: "spring", damping: 26, stiffness: 280 }}
             >
+              {/* Close button */}
               <motion.button
                 onClick={() => setIsModalOpen(false)}
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
-                className="absolute top-4 right-4 z-20 bg-black/50 backdrop-blur-sm rounded-full p-2 hover:bg-black/70 transition-colors border border-white/10"
+                style={{
+                  position: "absolute",
+                  top: "14px",
+                  right: "14px",
+                  zIndex: 30,
+                  background: "rgba(10,10,10,0.65)",
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
+                  border: "1px solid rgba(255,255,255,0.13)",
+                  borderRadius: "50%",
+                  width: "38px",
+                  height: "38px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                }}
+                transition={{ duration: 0.18 }}
               >
-                <X className="w-5 h-5 text-white" />
+                <X className="w-4 h-4 text-white" />
               </motion.button>
-              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] max-h-[30vh] overflow-hidden bg-[#141414]">
+
+              {/* ── IMAGE SECTION ── 5:4, fills full width, object-fit cover, zero bleed */}
+              <div
+                style={{
+                  width: "100%",
+                  aspectRatio: "5 / 4",
+                  maxHeight: "300px",
+                  overflow: "hidden",
+                  background: "#0F0F10",
+                  borderRadius: "24px 24px 0 0",
+                  flexShrink: 0,
+                }}
+              >
                 <motion.img
                   src={selectedItem.image}
                   alt={selectedItem.name}
-                  className="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-70"
-                  initial={{ scale: 1.05 }}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    display: "block",
+                  }}
+                  initial={{ scale: 1.06 }}
                   animate={{ scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                />
-                <div className="absolute inset-0 bg-black/15" />
-                <motion.img
-                  src={selectedItem.image}
-                  alt={selectedItem.name}
-                  className="relative z-10 w-full h-full object-contain"
-                  initial={{ scale: 1.08 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.55, ease: "easeOut" }}
                 />
               </div>
-              <div className="p-5 sm:p-6">
+
+              {/* ── CONTENT SECTION ── */}
+              <div style={{ padding: "20px 28px 24px", flex: 1 }}>
+                {/* Name + Price row */}
                 <motion.div
-                  className="flex justify-between items-start mb-3"
-                  initial={{ opacity: 0, y: 20 }}
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                    gap: "16px",
+                    marginBottom: "14px",
+                  }}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
+                  transition={{ delay: 0.15 }}
                 >
-                  <h2 className="text-2xl sm:text-3xl font-bold text-[#EFC1A9]">
+                  <h2
+                    style={{
+                      fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                      fontWeight: 700,
+                      color: "#E8C0A8",
+                      lineHeight: 1.2,
+                      margin: 0,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
                     {selectedItem.name}
                   </h2>
-                  <span className="text-xl sm:text-2xl font-bold text-[#EFC1A9]">
-                    {selectedItem.price}
-                  </span>
+                  <div
+                    style={{
+                      flexShrink: 0,
+                      background: "rgba(232,192,168,0.1)",
+                      border: "1px solid rgba(232,192,168,0.25)",
+                      borderRadius: "12px",
+                      padding: "6px 14px",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)",
+                        fontWeight: 700,
+                        color: "#E8C0A8",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {selectedItem.price}
+                    </span>
+                  </div>
                 </motion.div>
+
+                {/* Divider */}
+                <motion.div
+                  style={{
+                    height: "1px",
+                    background: "rgba(255,255,255,0.07)",
+                    marginBottom: "16px",
+                  }}
+                  initial={{ scaleX: 0, originX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 0.2, duration: 0.4 }}
+                />
+
+                {/* Description */}
                 <motion.p
-                  className="text-white/80 text-base sm:text-lg mb-4 leading-relaxed"
+                  style={{
+                    color: "rgba(255,255,255,0.72)",
+                    fontSize: "1.05rem",
+                    lineHeight: 1.7,
+                    margin: "0 0 20px",
+                  }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
+                  transition={{ delay: 0.25 }}
                 >
                   {selectedItem.description}
                 </motion.p>
+
+                {/* Variants */}
                 {getItemVariants(selectedItem).length > 0 && (
                   <motion.div
-                    className="flex flex-wrap gap-2 mb-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.35 }}
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "8px",
+                      marginBottom: "16px",
+                    }}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
                   >
+                    <span
+                      style={{
+                        fontSize: "0.72rem",
+                        fontWeight: 600,
+                        color: "rgba(255,255,255,0.35)",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.1em",
+                        alignSelf: "center",
+                        marginRight: "4px",
+                      }}
+                    >
+                      Options
+                    </span>
                     {getItemVariants(selectedItem).map((variant) => (
                       <span
-                        key={`${selectedItem.id}-${variant}`}
-                        className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold bg-[#EFC1A9]/15 text-[#EFC1A9] border border-[#EFC1A9]/30"
+                        key={`modal-${selectedItem.id}-${variant}`}
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          borderRadius: "8px",
+                          padding: "5px 13px",
+                          fontSize: "0.82rem",
+                          fontWeight: 600,
+                          background: "rgba(232,192,168,0.1)",
+                          color: "#E8C0A8",
+                          border: "1px solid rgba(232,192,168,0.28)",
+                        }}
                       >
                         {variant}
                       </span>
                     ))}
                   </motion.div>
                 )}
+
+                {/* Category badge + Popular tag */}
                 <motion.div
-                  className="flex flex-wrap items-center gap-2"
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "8px",
+                    marginBottom: "20px",
+                  }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 }}
+                  transition={{ delay: 0.35 }}
                 >
-                  <span className="px-3 py-1.5 bg-[#2B2B2B] text-white rounded-full text-xs sm:text-sm border border-white/10">
+                  <span
+                    style={{
+                      padding: "5px 13px",
+                      background: "rgba(255,255,255,0.05)",
+                      color: "rgba(255,255,255,0.6)",
+                      borderRadius: "8px",
+                      fontSize: "0.8rem",
+                      fontWeight: 500,
+                      border: "1px solid rgba(255,255,255,0.1)",
+                    }}
+                  >
                     {selectedItem.category}
                   </span>
                   {selectedItem.popular && (
                     <motion.span
-                      className="px-3 py-1.5 bg-yellow-500 text-white rounded-full text-xs sm:text-sm flex items-center gap-2 border border-yellow-600"
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
+                      style={{
+                        padding: "5px 13px",
+                        background: "rgba(232,192,168,0.15)",
+                        color: "#E8C0A8",
+                        borderRadius: "8px",
+                        fontSize: "0.8rem",
+                        fontWeight: 600,
+                        border: "1px solid rgba(232,192,168,0.3)",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "5px",
+                      }}
+                      animate={{ scale: [1, 1.04, 1] }}
+                      transition={{ duration: 2.5, repeat: Infinity }}
                     >
-                      <Star className="w-4 h-4" />
+                      <Star className="w-3 h-3" />
                       Popular Choice
                     </motion.span>
                   )}
                 </motion.div>
 
+                {/* Prep time bar */}
                 <motion.div
-                  className="mt-4 rounded-xl border border-white/10 bg-[#2B2B2B] px-4 py-3 flex items-center gap-2 text-white/85"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    borderRadius: "12px",
+                    padding: "12px 16px",
+                    marginBottom: "14px",
+                  }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.45 }}
+                  transition={{ delay: 0.4 }}
                 >
-                  <Clock className="w-4 h-4 text-[#EFC1A9]" />
-                  <span className="text-sm font-medium">
-                    Preparation time: 10-15 minutes
+                  <Clock
+                    style={{
+                      width: "16px",
+                      height: "16px",
+                      color: "#E8C0A8",
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "0.88rem",
+                      color: "rgba(255,255,255,0.7)",
+                      fontWeight: 500,
+                    }}
+                  >
+                    Preparation time: 10–15 minutes
                   </span>
                 </motion.div>
+
+                {/* CTA Button */}
+                <motion.button
+                  whileHover={{ scale: 1.02, brightness: 1.1 }}
+                  whileTap={{ scale: 0.98 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.45 }}
+                  style={{
+                    width: "100%",
+                    padding: "15px 24px",
+                    background:
+                      "linear-gradient(135deg, #E8C0A8 0%, #d4a48e 100%)",
+                    color: "#1a1008",
+                    border: "none",
+                    borderRadius: "14px",
+                    fontSize: "1rem",
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    letterSpacing: "0.02em",
+                    transition: "filter 0.2s, transform 0.15s",
+                  }}
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Got it — sounds delicious!
+                </motion.button>
               </div>
             </motion.div>
           </motion.div>

@@ -3,13 +3,30 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   images: {
-    domains: ['*'], // optional, adjust if needed
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'slelguoygbfzlpylpxfs.supabase.co',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.postimg.cc',
+      },
+    ],
+  },
+  turbopack: {
+    root: __dirname,
   },
   typescript: {
     ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
 };
 

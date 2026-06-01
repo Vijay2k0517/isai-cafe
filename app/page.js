@@ -5,6 +5,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+// Images now served from public folder
 import {
   Instagram,
   Facebook,
@@ -192,7 +193,7 @@ const HeroSection = () => {
   return (
     <section className="relative h-screen overflow-hidden">
       <img
-        src="https://img.sanishtech.com/u/1c6462b97fb1e6542b3e369cbb47e873.jpeg"
+        src="/isai-pic/hero/1000071173_83a4620d8de21309f41d927d50ad42d3-15_12_2025%2C%2019_36_34.jpg.jpeg"
         alt="Isai hero background"
         className="parallax-bg absolute inset-0 h-full w-full object-cover object-center"
         style={{
@@ -218,7 +219,7 @@ const HeroSection = () => {
           }`}
         >
           <img
-            src="https://img.sanishtech.com/u/61bc0caccb93f04084771bff8a31133f.png"
+            src="/isai-pic/logo/isai-logo.png"
             alt="Isai Cafe The Art Cafe"
             className="w-[220px] sm:w-[260px] md:w-[300px] h-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)]"
           />

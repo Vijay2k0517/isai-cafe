@@ -3,9 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import philosophyImage from "@/isai-pic/hero/DSC_0768.jpg.jpeg";
+import classicalImage from "@/isai-pic/hero/DSC_0719.jpg.jpeg";
 import {
   Instagram,
   Facebook,
@@ -24,8 +26,8 @@ import { useAuth } from "@/context/AuthContext";
 // Navigation Component
 const Navigation = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const { user, isAuthenticated, isAgent, logout } = useAuth();
-  const [activeSection, setActiveSection] = useState("about");
   const [isVisible, setIsVisible] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const ref = useRef();
@@ -38,6 +40,7 @@ const Navigation = () => {
     { name: "Events", href: "/events", section: "events" },
     { name: "Contact", href: "/contact", section: "contact" },
   ];
+  const activeSection = navItems.find((item) => item.href === pathname)?.section;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -341,8 +344,7 @@ const SplitTextReveal = () => {
             <div
               className="w-full h-96 bg-cover bg-center rounded-3xl shadow-2xl"
               style={{
-                backgroundImage:
-                  "url('https://images.unsplash.com/photo-1593518468260-7e32a7467614')",
+                backgroundImage: `url('${classicalImage.src}')`,
                 clipPath: "polygon(0 0, 100% 0, 85% 100%, 0 85%)",
               }}
             />
@@ -563,8 +565,7 @@ const ThemeSection = () => {
             <div
               className="w-full h-96 bg-cover bg-center rounded-3xl shadow-2xl"
               style={{
-                backgroundImage:
-                  "url('https://images.unsplash.com/photo-1573822028151-731623cb0722')",
+                backgroundImage: `url('${philosophyImage.src}')`,
               }}
             />
           </div>
