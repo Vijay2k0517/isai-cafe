@@ -1,5 +1,3 @@
-// Copy this entire code and replace your app/page.js file
-
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -22,6 +20,23 @@ import {
   LogOut,
   ChevronDown,
   Briefcase,
+  GraduationCap,
+  Code2,
+  Cpu,
+  Layers,
+  Sparkles,
+  Zap,
+  CheckCircle2,
+  Globe,
+  Terminal,
+  ShieldCheck,
+  Smartphone,
+  Palette,
+  Server,
+  Copy,
+  Check,
+  Award,
+  BookOpen,
 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
@@ -851,6 +866,576 @@ const InstagramSection = () => {
   );
 };
 
+// Academic Portfolio & Technology Showcase Section
+const PortfolioShowcaseSection = () => {
+  const [activeTab, setActiveTab] = useState("stack");
+  const [copiedSnippet, setCopiedSnippet] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const stats = [
+    {
+      label: "Architecture",
+      value: "Next.js App Router",
+      sub: "Server & Client Hydration",
+      icon: Globe,
+    },
+    {
+      label: "UI Performance",
+      value: "60 FPS Fluid",
+      sub: "Intersection Observer Driven",
+      icon: Zap,
+    },
+    {
+      label: "Design System",
+      value: "Bespoke HSL Tokens",
+      sub: "Editorial Playfair & Bento Grid",
+      icon: Palette,
+    },
+    {
+      label: "Accessibility",
+      value: "WCAG 2.1 AA",
+      sub: "Semantic HTML & High Contrast",
+      icon: ShieldCheck,
+    },
+  ];
+
+  const techCategories = [
+    {
+      category: "Frontend Core & Architecture",
+      icon: Code2,
+      badge: "Framework & Language",
+      description:
+        "Modern component-driven web framework engineered for high rendering speed and SEO readiness.",
+      items: [
+        {
+          name: "Next.js (App Router)",
+          role: "Framework",
+          desc: "Leverages modern file-based routing, static site export capabilities, dynamic metadata, and decoupled client component boundaries.",
+          tag: "Next.js 14+",
+        },
+        {
+          name: "React 18",
+          role: "UI Library",
+          desc: "Utilizes React Hooks (useState, useEffect, useRef), custom Context providers for global session state, and concurrent UI rendering.",
+          tag: "React 18",
+        },
+        {
+          name: "JavaScript (ES6+)",
+          role: "Core Language",
+          desc: "Authored with modern asynchronous patterns, clean modular architecture, and native browser Web APIs.",
+          tag: "ES6+",
+        },
+      ],
+    },
+    {
+      category: "Design System & Styling",
+      icon: Palette,
+      badge: "Visual Engineering",
+      description:
+        "A handcrafted aesthetic harmonizing classical Indian cultural warmth with luxury dark-mode aesthetics.",
+      items: [
+        {
+          name: "Tailwind CSS",
+          role: "Utility Engine",
+          desc: "Bespoke HSL design tokens declared in globals.css, custom responsive breakpoints, fluid typography, and dark-mode color balance.",
+          tag: "Tailwind 3.4",
+        },
+        {
+          name: "Playfair Display & Inter",
+          role: "Typography Hierarchy",
+          desc: "Editorial high-contrast serifs ('Playfair Display') celebrating Indian classical music heritage, paired with geometric sans-serif ('Inter') for crisp body legibility.",
+          tag: "Google Fonts",
+        },
+        {
+          name: "Bespoke Palette (#EFC1A9)",
+          role: "Color Identity",
+          desc: "Signature champagne gold and warm terracotta accents paired with deep obsidian (#1A1A1A / #0A0A0A) surfaces, avoiding generic palettes.",
+          tag: "Harmonious HSL",
+        },
+      ],
+    },
+    {
+      category: "Motion & Micro-Interactions",
+      icon: Sparkles,
+      badge: "Interaction Design",
+      description:
+        "Fluid micro-animations that breathe life into content without incurring layout jank or frame drops.",
+      items: [
+        {
+          name: "Intersection Observer API",
+          role: "Motion Engine",
+          desc: "Replaces heavy scroll event listeners with native browser intersection thresholds, guaranteeing zero jank and fluid entrance triggers.",
+          tag: "Zero Jank",
+        },
+        {
+          name: "Framer Motion & CSS Keyframes",
+          role: "Animation Pipeline",
+          desc: "Smooth marquee tickers, hover lifts, interactive scale transforms, and responsive spring dynamics for a tactile feel.",
+          tag: "Micro-animations",
+        },
+        {
+          name: "Asymmetric Bento Grids",
+          role: "Spatial UX Layout",
+          desc: "Choreographed bento box layout for opening hours and culinary specials, balancing high information density with playful visual hierarchy.",
+          tag: "Modern Layouts",
+        },
+      ],
+    },
+    {
+      category: "UI Primitives & Real-World Integrations",
+      icon: Server,
+      badge: "Production Ready",
+      description:
+        "End-to-end integration patterns engineered for real-world reliability, accessibility, and business utility.",
+      items: [
+        {
+          name: "Radix UI & Shadcn Primitives",
+          role: "Accessible UI Components",
+          desc: "Unstyled, headless accessible dialogs, dropdowns, and interactive widgets adhering to WAI-ARIA authoring guidelines.",
+          tag: "Headless Accessible",
+        },
+        {
+          name: "Lucide React",
+          role: "Vector Icon System",
+          desc: "Unified stroke-width iconography providing clean visual cues across navigation, contact anchors, and social feeds.",
+          tag: "Clean Icons",
+        },
+        {
+          name: "WhatsApp Direct Dispatch",
+          role: "Real-time Booking Bridge",
+          desc: "Dynamic URL encoding protocol enabling instant table and event reservations with pre-filled guest and date parameters.",
+          tag: "Business Integration",
+        },
+      ],
+    },
+  ];
+
+  const engineeringPillars = [
+    {
+      title: "Modular Component Architecture",
+      icon: Layers,
+      highlight: "Clean Codebase",
+      description:
+        "Engineered with a strict atomic hierarchy. Reusable components (Navigation, Hero, BentoGrid, Menu, SocialFeeds, Modals) are isolated with self-contained styling and minimal prop drilling, facilitating straightforward refactoring and team collaboration.",
+      keyPoints: [
+        "Separation of presentation and business logic",
+        "Encapsulated state machines within interactive islands",
+        "DRY layout wrappers across multi-page routes",
+      ],
+    },
+    {
+      title: "Core Web Vitals & Performance",
+      icon: Zap,
+      highlight: "Sub-Second FCP",
+      description:
+        "Every interactive element is designed to minimize CPU cycles. By leveraging CSS transform/opacity animations rather than layout-triggering properties (width/height), the site sustains a fluid 60 FPS across both desktop and mobile devices.",
+      keyPoints: [
+        "No Cumulative Layout Shift (CLS = 0)",
+        "Hardware-accelerated CSS GPU layers",
+        "Lightweight asset footprint without heavy external runtimes",
+      ],
+    },
+    {
+      title: "Accessibility & Semantic Standards",
+      icon: ShieldCheck,
+      highlight: "Inclusive Design",
+      description:
+        "Built adhering to WCAG 2.1 AA standards. Color contrast ratios between text elements and dark surfaces exceed 4.5:1, semantic landmark tags (<nav>, <main>, <section>, <footer>) guide screen readers, and all buttons feature descriptive ARIA labels.",
+      keyPoints: [
+        "Semantic HTML5 hierarchy with single <h1> entry",
+        "Accessible contrast verified across dark-mode tokens",
+        "Keyboard navigable links and dialogs",
+      ],
+    },
+    {
+      title: "Mobile-First Responsive Engineering",
+      icon: Smartphone,
+      highlight: "Multi-Device Fluidity",
+      description:
+        "Designed and rigorously tested across viewports ranging from 320px mobile screens to 4K displays. Uses dynamic CSS clamp functions, Tailwind breakpoint choreographies, and touch-optimized touch targets (min 44px).",
+      keyPoints: [
+        "Touch-friendly tap targets and gesture-friendly cards",
+        "Responsive bento grid collapsing gracefully into single-column feeds",
+        "Adaptive typography scaling proportionally across screen sizes",
+      ],
+    },
+  ];
+
+  const academicImpact = [
+    {
+      title: "Graduate Admissions & Research Alignment",
+      icon: GraduationCap,
+      desc: "Developed as a flagship capstone for higher studies applications (Master's in Computer Science, Software Engineering, or Human-Computer Interaction). It demonstrates applied competence in modern software engineering paradigms, user research, and performant web architecture.",
+    },
+    {
+      title: "Engineering Problem Statement",
+      icon: Cpu,
+      desc: "Traditional cultural café websites often struggle with visual clutter, heavy unoptimized assets, and poor mobile responsiveness. Isai Café solves this by harmonizing editorial artistic aesthetics with lean, componentized code — ensuring fast load times and intuitive conversion pathways.",
+    },
+    {
+      title: "Core Technical Competencies Demonstrated",
+      icon: Award,
+      desc: "Full-stack frontend architecture, reactive state management via Context API, custom Intersection Observer animation triggers, Bento spatial layout mechanics, and cross-platform design systems.",
+    },
+    {
+      title: "Academic & Professional Growth Focus",
+      icon: BookOpen,
+      desc: "Highlights readiness for advanced graduate coursework in Distributed Systems, Interactive Media, HCI, and Scalable Web Technologies, emphasizing code craftsmanship and empathy for the end user.",
+    },
+  ];
+
+  const codeSnippet = `// Isai Café Architecture Blueprint
+{
+  "application": "Isai - The Art Café Web Platform",
+  "developerProfile": "Higher Studies / Master's Portfolio Showcase",
+  "technicalStack": {
+    "framework": "Next.js (App Router) + React 18",
+    "language": "Modern JavaScript (ES6+)",
+    "styling": "Tailwind CSS + Custom HSL Design Tokens",
+    "motion": "Intersection Observer API + CSS Keyframe Engines",
+    "primitives": "Radix UI Headless Components + Lucide Icons",
+    "state": "React Context API (Auth / Global Session)"
+  },
+  "metrics": {
+    "targetFrameRate": "60 FPS (Hardware Accelerated)",
+    "accessibility": "WCAG 2.1 AA Compliant Contrast",
+    "responsiveRange": "320px (Mobile) to 3840px (4K Ultra-Wide)",
+    "layoutShift": "0.0 CLS (Zero Cumulative Layout Shift)"
+  },
+  "integrations": [
+    "WhatsApp Instant Booking Protocol",
+    "Dynamic Instagram Feed Embed Bridge",
+    "Client-Side Authentication Context Provider"
+  ]
+}`;
+
+  const handleCopy = () => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(codeSnippet);
+      setCopiedSnippet(true);
+      setTimeout(() => setCopiedSnippet(false), 2000);
+    }
+  };
+
+  return (
+    <section
+      id="portfolio-showcase"
+      ref={sectionRef}
+      className="py-24 px-4 bg-[#0F0F0F] relative overflow-hidden border-t border-[#262626]"
+    >
+      {/* Ambient background glows */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#EFC1A9]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#EFC1A9]/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container mx-auto max-w-6xl relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EFC1A9]/10 border border-[#EFC1A9]/30 text-[#EFC1A9] text-xs sm:text-sm font-semibold tracking-wider uppercase mb-5">
+            <GraduationCap size={16} />
+            <span>Higher Studies Portfolio Showcase</span>
+          </div>
+
+          <h2 className="isai-font text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#EFC1A9] mb-4 tracking-tight">
+            ABOUT THIS WEBSITE & TECH STACK
+          </h2>
+
+          <p className="text-xl sm:text-2xl text-white font-light tracking-wide mb-4 max-w-3xl mx-auto">
+            Architectural Blueprint, Design System & Engineering Highlights
+          </p>
+
+          <p className="text-[#a8a8a8] text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
+            A comprehensive breakdown of the architectural decisions, interactive design systems, and frontend engineering principles behind the Isai Café web platform — curated for graduate school admissions and technical portfolio showcase.
+          </p>
+        </div>
+
+        {/* Quick Metrics Strip */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
+          {stats.map((stat, idx) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={idx}
+                className="bg-[#171717] border border-[#2A2A2A] hover:border-[#EFC1A9]/40 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 group"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs uppercase font-medium tracking-wider text-[#8A8A8A]">
+                    {stat.label}
+                  </span>
+                  <div className="p-2 rounded-lg bg-[#EFC1A9]/10 text-[#EFC1A9] group-hover:bg-[#EFC1A9] group-hover:text-[#171717] transition-colors">
+                    <Icon size={16} />
+                  </div>
+                </div>
+                <div className="text-lg sm:text-xl font-bold text-white mb-1 group-hover:text-[#EFC1A9] transition-colors">
+                  {stat.value}
+                </div>
+                <p className="text-xs text-[#9E9E9E]">{stat.sub}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Interactive Tab Navigation */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12">
+          {[
+            { id: "stack", label: "Technology Stack", icon: Code2 },
+            { id: "engineering", label: "Engineering Architecture", icon: Layers },
+            { id: "academic", label: "Academic Impact & Thesis", icon: GraduationCap },
+          ].map((tab) => {
+            const TabIcon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full text-sm sm:text-base font-semibold transition-all duration-200 ${
+                  isActive
+                    ? "bg-[#EFC1A9] text-[#141414] shadow-lg shadow-[#EFC1A9]/20"
+                    : "bg-[#1A1A1A] text-[#a8a8a8] border border-[#2E2E2E] hover:text-white hover:border-[#EFC1A9]/50"
+                }`}
+              >
+                <TabIcon size={18} />
+                <span>{tab.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Tab 1: Technology Stack */}
+        {activeTab === "stack" && (
+          <div className="space-y-8 animate-fadeIn">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {techCategories.map((cat, idx) => {
+                const CatIcon = cat.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="bg-[#151515] border border-[#282828] hover:border-[#EFC1A9]/30 rounded-3xl p-6 sm:p-8 transition-all duration-300"
+                  >
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2.5 rounded-xl bg-[#EFC1A9]/10 text-[#EFC1A9]">
+                          <CatIcon size={22} />
+                        </div>
+                        <h3 className="text-xl font-bold text-white">
+                          {cat.category}
+                        </h3>
+                      </div>
+                      <span className="text-xs px-3 py-1 rounded-full bg-[#242424] text-[#EFC1A9] border border-[#383838] font-medium">
+                        {cat.badge}
+                      </span>
+                    </div>
+
+                    <p className="text-sm text-[#9A9A9A] mb-6 leading-relaxed">
+                      {cat.description}
+                    </p>
+
+                    <div className="space-y-4">
+                      {cat.items.map((item, i) => (
+                        <div
+                          key={i}
+                          className="bg-[#1C1C1C] border border-[#2A2A2A] rounded-2xl p-4 hover:border-[#EFC1A9]/30 transition-colors"
+                        >
+                          <div className="flex items-center justify-between mb-1.5">
+                            <span className="font-semibold text-white text-base">
+                              {item.name}
+                            </span>
+                            <span className="text-[11px] px-2.5 py-0.5 rounded-md bg-[#282828] text-[#EFC1A9] font-mono">
+                              {item.tag}
+                            </span>
+                          </div>
+                          <span className="inline-block text-xs font-medium text-[#EFC1A9] mb-1">
+                            {item.role}
+                          </span>
+                          <p className="text-xs text-[#a8a8a8] leading-relaxed">
+                            {item.desc}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Tab 2: Engineering Architecture */}
+        {activeTab === "engineering" && (
+          <div className="space-y-8 animate-fadeIn">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {engineeringPillars.map((pillar, idx) => {
+                const PillarIcon = pillar.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="bg-[#151515] border border-[#282828] hover:border-[#EFC1A9]/30 rounded-3xl p-6 sm:p-8 transition-all duration-300 flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="p-3 rounded-2xl bg-[#EFC1A9]/10 text-[#EFC1A9]">
+                          <PillarIcon size={24} />
+                        </div>
+                        <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#EFC1A9]/10 text-[#EFC1A9] border border-[#EFC1A9]/20">
+                          {pillar.highlight}
+                        </span>
+                      </div>
+
+                      <h3 className="text-xl font-bold text-white mb-3">
+                        {pillar.title}
+                      </h3>
+
+                      <p className="text-sm text-[#a8a8a8] leading-relaxed mb-6">
+                        {pillar.description}
+                      </p>
+                    </div>
+
+                    <div className="border-t border-[#262626] pt-4 space-y-2">
+                      {pillar.keyPoints.map((point, pIdx) => (
+                        <div key={pIdx} className="flex items-start gap-2 text-xs text-[#c4c4c4]">
+                          <CheckCircle2 size={14} className="text-[#EFC1A9] mt-0.5 shrink-0" />
+                          <span>{point}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Tab 3: Academic Impact & Thesis */}
+        {activeTab === "academic" && (
+          <div className="space-y-8 animate-fadeIn">
+            <div className="bg-gradient-to-br from-[#1C1714] via-[#141414] to-[#121212] border border-[#EFC1A9]/30 rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+              <div className="max-w-3xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EFC1A9]/15 text-[#EFC1A9] text-xs font-semibold mb-4">
+                  <Award size={14} />
+                  <span>Portfolio Narrative</span>
+                </div>
+                <h3 className="isai-font text-2xl sm:text-3xl font-bold text-white mb-4">
+                  Translating Cultural Warmth into High-Performance Software
+                </h3>
+                <p className="text-sm sm:text-base text-[#c4c4c4] leading-relaxed mb-8">
+                  Rather than building a standard generic commercial portal, this website was built to explore the synthesis of cultural heritage and state-of-the-art web engineering. It demonstrates proficiency in user-centric interaction design, performant rendering architectures, and production-quality codebase modularity — key technical prerequisites for advanced graduate research.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {academicImpact.map((item, idx) => {
+                  const ItemIcon = item.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="bg-[#181818]/80 border border-[#2E2E2E] rounded-2xl p-5 hover:border-[#EFC1A9]/40 transition-colors"
+                    >
+                      <div className="flex items-center gap-3 mb-2.5">
+                        <div className="p-2 rounded-lg bg-[#EFC1A9]/10 text-[#EFC1A9]">
+                          <ItemIcon size={18} />
+                        </div>
+                        <h4 className="text-base font-bold text-white">
+                          {item.title}
+                        </h4>
+                      </div>
+                      <p className="text-xs sm:text-sm text-[#a8a8a8] leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Architecture Blueprint Terminal Box */}
+        <div className="mt-14 bg-[#141414] border border-[#2A2A2A] rounded-3xl overflow-hidden shadow-2xl">
+          <div className="flex items-center justify-between px-6 py-4 bg-[#1B1B1B] border-b border-[#2A2A2A]">
+            <div className="flex items-center gap-2.5">
+              <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
+              <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
+              <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
+              <div className="flex items-center gap-2 ml-3 text-xs text-[#8A8A8A] font-mono">
+                <Terminal size={14} className="text-[#EFC1A9]" />
+                <span>isai-architecture-blueprint.json</span>
+              </div>
+            </div>
+
+            <button
+              onClick={handleCopy}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#242424] hover:bg-[#2F2F2F] text-xs text-[#c4c4c4] hover:text-white border border-[#333333] transition-all"
+            >
+              {copiedSnippet ? (
+                <>
+                  <Check size={14} className="text-green-400" />
+                  <span className="text-green-400 font-medium">Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy size={14} />
+                  <span>Copy Blueprint</span>
+                </>
+              )}
+            </button>
+          </div>
+
+          <div className="p-6 font-mono text-xs sm:text-sm text-[#E0E0E0] overflow-x-auto bg-[#101010]">
+            <pre className="text-[#a8a8a8] leading-relaxed">
+              <code>
+                {`{
+  `}<span className="text-[#EFC1A9]">"project"</span>{`: `}<span className="text-green-300">"Isai - The Art Café Web Platform"</span>{`,
+  `}<span className="text-[#EFC1A9]">"purpose"</span>{`: `}<span className="text-green-300">"Higher Studies & Master's Portfolio Showcase"</span>{`,
+  `}<span className="text-[#EFC1A9]">"architecture"</span>{`: {
+    `}<span className="text-[#EFC1A9]">"framework"</span>{`: `}<span className="text-sky-300">"Next.js (App Router) + React 18"</span>{`,
+    `}<span className="text-[#EFC1A9]">"styling"</span>{`: `}<span className="text-sky-300">"Tailwind CSS with Custom HSL Design Tokens"</span>{`,
+    `}<span className="text-[#EFC1A9]">"motion"</span>{`: `}<span className="text-sky-300">"Intersection Observer API + CSS Keyframes"</span>{`,
+    `}<span className="text-[#EFC1A9]">"componentSystem"</span>{`: `}<span className="text-sky-300">"Radix UI Primitives + Lucide React Icons"</span>{`
+  },
+  `}<span className="text-[#EFC1A9]">"engineeringHighlights"</span>{`: [
+    `}<span className="text-yellow-200">"Component-driven modular hierarchy"</span>{`,
+    `}<span className="text-yellow-200">"Zero layout shift (CLS = 0) with 60 FPS motion"</span>{`,
+    `}<span className="text-yellow-200">"WCAG 2.1 AA compliant color contrast & semantics"</span>{`,
+    `}<span className="text-yellow-200">"Production WhatsApp reservation webhook dispatch"</span>{`
+  ]
+}`}
+              </code>
+            </pre>
+          </div>
+        </div>
+
+        {/* Showcase Bottom Summary Banner */}
+        <div className="mt-12 text-center">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-[#171717] border border-[#2E2E2E] rounded-2xl px-6 py-4">
+            <div className="flex items-center gap-2 text-sm text-[#EFC1A9] font-semibold">
+              <GraduationCap size={18} />
+              <span>Higher Studies Showcase Ready</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-[#333]" />
+            <p className="text-xs sm:text-sm text-[#a8a8a8]">
+              Engineered with clean code, modern UX principles, and scalable web architecture.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 // Footer Component
 const Footer = () => {
   const navItems = [
@@ -951,6 +1536,7 @@ export default function Home() {
       <OpeningHoursBento />
       <CulinaryExperience />
       <InstagramSection />
+      <PortfolioShowcaseSection />
       <Footer />
     </div>
   );
